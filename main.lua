@@ -14,9 +14,6 @@ end
 
 function love.update(dt)
 
-    remaining_time = 20
-    -- number = number + 1
-    remaining_time=remaining_time-dt
     
 end
 
@@ -32,7 +29,7 @@ function love.draw()
     love.graphics.setColor(255,255,255)
     love.graphics.print(score,0,0)
 
-    love.graphics.print(remaining_time,0,70)
+    -- love.graphics.print(,0,70)
 
     -- love.graphics.print(timer,0,70)
 end
