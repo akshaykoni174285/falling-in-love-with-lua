@@ -5,9 +5,10 @@
 function love.load()
     local anim8 = require '/libraries/anim8'
     love.graphics.setDefaultFilter("nearest","nearest")
-
+    Camera = require '/libraries/hump.camera'
+    cam = Camera()
     local sti = require "/libraries/sti"
-    gamemap = sti("/maps/test_map.lua")
+    gamemap = sti("/maps/titles_map.lua")
     player = {}
     player.x = 200
     player.y = 200
@@ -62,15 +63,21 @@ function love.update(dt)
     end    
 
     player.anim:update(dt)
+    cam:lookAt(player.x, player.y)
 
 end
 
 function love.draw()
-    gamemap:draw()
+    cam:attach()
+        -- gamemap:draw()
+        -- keep in mind that first ground will be drawn and then trees and then tiles 
+        gamemap:drawLayer(gamemap.layers["ground"])
+        gamemap:drawLayer(gamemap.layers["trees"])
+        gamemap:drawLayer(gamemap.layers["tiles"])
     -- love.graphics.setColor(255,255,255)
     -- love.graphics.draw(player.sprites,player.x,player.y)
     -- love.graphics.circle("fill",player.x,player.y,player.radius)
     -- love.graphics.setColor(255,255,255)
-    player.anim:draw(player.spritesheet,player.x,player.y,nil,5)
-    
+        player.anim:draw(player.spritesheet,player.x,player.y,nil,5)
+    cam:detach()
 end
