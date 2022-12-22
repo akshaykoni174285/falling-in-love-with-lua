@@ -1,4 +1,6 @@
 -- local anim8 = require '/libraries/anim8'
+-- we also be needing sti to draw the map for us 
+-- so to use the camera we are gonna need a package called hump 
 
 function love.load()
     local anim8 = require '/libraries/anim8'
