@@ -1,9 +1,13 @@
 function love.load()
     wf = require "libraries/windfield/windfield"
     world = wf.newWorld(0,500)
-    player = world:newRectangleCollider(love.graphics.getWidth()/2-50-2, love.graphics.getHeight()/2-50/2,50,50)
+    -- player = world:newRectangleCollider(love.graphics.getWidth()/2-50-2, love.graphics.getHeight()/2-50/2,50,50)
+    player = world:newRectangleCollider(love.graphics.getWidth()/2-50/2, love.graphics.getHeight()/2-50/2,50,50)
     platform = world:newRectangleCollider(0,love.graphics.getHeight()-100,love.graphics.getWidth(),100)
     platform:setType("static")
+    -- player_1 = world:newRectangleCollider(400,300,50,50)
+    -- player_1:setType("ghost")
+    
     -- player::setRestitution(0.8)
 --     world = love.physics.newWorld(0,9.18)
 
@@ -25,10 +29,20 @@ function love.load()
 end
 
 function love.update(dt)
+    if love.keyboard.isDown('left') then
+        player:applyForce(-5000,0)
+    end
+    
+    if love.keyboard.isDown('right') then
+        player:applyForce(5000,0)
+    end
     
     world:update(dt)
---     world:update(dt) --this puts the world into motion
-  
+--     if player:enter('solid') then 
+--         player:applyLinearImpulse(5000,0)
+--         -- player:applyAngularImpulse(2000)
+-- --     world:update(dt) --this puts the world into motion
+--     end
 --   --here we are going to create some keyboard events
 --   if love.keyboard.isDown("right") then --press the right arrow key to push the ball to the right
 --     objects.ball.body:applyForce(400, 0)

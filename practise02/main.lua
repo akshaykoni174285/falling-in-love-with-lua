@@ -6,20 +6,20 @@ function love.load()
 
 local anim8 = require "/libraries/anim8"
 
-image = love.graphics.newImage("sources/player-sheet.png")
-local g = anim8.newGrid(12,18,image:getWidth(),image:getHeight())
-player.animation = {}
-player.animation.down = anim8.newAnimation(g('1-4',1),0.1)
-player.animation.left = anim8.newAnimation(g('1-4',2),0.1)
-player.animation.right = anim8.newAnimation(g('1-4',3),0.1)
-player.animation.up = anim8.newAnimation(g('1-4',4),0.1)
-player.anim = player.animation.left
+	image = love.graphics.newImage("sources/player-sheet.png")
+	local g = anim8.newGrid(12,18,image:getWidth(),image:getHeight())
+	player.animation = {}
+	player.animation.down = anim8.newAnimation(g('1-4',1),0.1)
+	player.animation.left = anim8.newAnimation(g('1-4',2),0.1)
+	player.animation.right = anim8.newAnimation(g('1-4',3),0.1)
+	player.animation.up = anim8.newAnimation(g('1-4',4),0.1)
+	player.anim = player.animation.left
 
-player.speed = 3
-background = love.graphics.newImage("sources/maxresdefault (1).jpg")
-player = {}
-player.x = love.graphics.getWidth()/2 
-player.y =love.graphics.getHeight()/2 
+	player.speed = 3
+	background = love.graphics.newImage("sources/maxresdefault (1).jpg")
+	player = {}
+	player.x = love.graphics.getWidth()/2 
+	player.y =love.graphics.getHeight()/2 
 
 
 
